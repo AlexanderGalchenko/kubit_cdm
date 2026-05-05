@@ -1,0 +1,15 @@
+services:
+  kubit-cdn:
+    build: .
+    container_name: kubit_cdn
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./data:/data
+      - ./cache:/var/cache/nginx/kubit
+      - ./logs:/var/log/nginx
+    environment:
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: change-me-now
+      ADMIN_SESSION_SECRET: change-this-secret
